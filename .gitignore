@@ -1,0 +1,14 @@
+# Nunca subir el .env real (tiene contraseñas y secretos)
+.env
+
+# Build de Java/Maven
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Docker
+postgres_data/

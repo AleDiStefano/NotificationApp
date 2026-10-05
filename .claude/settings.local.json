@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./mvnw.cmd -q spring-boot:test-run)",
+      "Bash(./mvnw.cmd -q clean spring-boot:test-run)",
+      "Bash(bash smoke.sh)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' http://localhost:8080/v3/api-docs)",
+      "Bash(curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}\\\\n' http://localhost:8080/swagger-ui.html)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' http://localhost:8080/swagger-ui/index.html)",
+      "Bash(curl -s http://localhost:8080/v3/api-docs)",
+      "Bash(python -c \"import sys,json;d=json.load\\(sys.stdin\\);print\\('paths:',sorted\\(d['paths'].keys\\(\\)\\)\\);print\\('schemes:',list\\(d.get\\('components',{}\\).get\\('securitySchemes',{}\\).keys\\(\\)\\)\\);print\\('title:',d['info']['title'],d['info']['version']\\)\")",
+      "Bash(node -e \"let s='';process.stdin.on\\('data',d=>s+=d\\).on\\('end',\\(\\)=>{const d=JSON.parse\\(s\\);console.log\\('title :',d.info.title,d.info.version\\);console.log\\('paths :'\\);Object.entries\\(d.paths\\).forEach\\(\\([p,m]\\)=>console.log\\('  ',Object.keys\\(m\\).join\\(','\\).toUpperCase\\(\\).padEnd\\(22\\),p\\)\\);console.log\\('schemes:',Object.keys\\(d.components.securitySchemes||{}\\)\\);console.log\\('security:',JSON.stringify\\(d.security\\)\\);}\\)\")",
+      "Bash(./mvnw.cmd clean *)",
+      "Bash(grep -E \"BUILD|Tests run:|Installing|\\\\.jar$|ERROR\")",
+      "Bash(echo \"EXIT: $?\")"
+    ]
+  }
+}
