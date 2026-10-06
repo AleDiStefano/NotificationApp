@@ -38,6 +38,7 @@ public class NotificationFailureRecoverer implements MessageRecoverer {
             rabbitTemplate, RabbitMqConfig.DLX, RabbitMqConfig.DLQ_ROUTING_KEY);
     }
 
+    
     @Override
     public void recover(Message message, Throwable cause) {
         NotificationMessage payload;
