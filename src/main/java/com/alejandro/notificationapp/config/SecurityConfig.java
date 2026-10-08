@@ -36,6 +36,8 @@ public class SecurityConfig {
         "/swagger-ui.html", "/swagger-ui/**"
     };
 
+    //Modificar la configuración de seguridad para permitir el acceso a la documentación y al registro de usuarios, mientras se protege el resto de la API con autenticación básica HTTP.
+    //Hacer antes de noviembre si es posible jeee
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -51,6 +53,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //Bean para el codificador de contraseñas, utilizando BCryptPasswordEncoder pero evaluando otras alternativas como Argon2PasswordEncoder o PBKDF2PasswordEncoder.
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
